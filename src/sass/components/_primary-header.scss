@@ -1,0 +1,36 @@
+@use '../abstracts/mixins';
+
+.primary-header {
+	padding-block-start: clamp(23.3rem, 55vw, 37.4rem);
+	padding-block-end: clamp(15.2rem, 30vw, 21.6rem);
+	@include mixins.media-query(large) {
+		padding-block-start: 6.4rem;
+		padding-block-end: 20rem;
+	}
+
+	background-image: url('../assets/images/homepage/hero-bg-mobile.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	@include mixins.media-query(medium) {
+		background-image: url('../assets/images/homepage/hero-bg-tablet.jpg');
+	}
+	@include mixins.media-query(large) {
+		background-image: url('../assets/images/homepage/hero-bg-desktop.jpg');
+	}
+
+	&__body {
+		margin-block-start: 3.6rem;
+		@include mixins.media-query(large) {
+			margin-block-start: 15.2rem;
+			max-width: 50%;
+		}
+	}
+
+	&__body p {
+		margin-block-end: 1.75em;
+		@include mixins.media-query(large) {
+			max-width: 37ch;
+			margin-block-end: 1em;
+		}
+	}
+}

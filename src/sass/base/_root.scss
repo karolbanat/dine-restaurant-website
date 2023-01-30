@@ -19,12 +19,12 @@
 
 	/* font sizes */
 	@each $screen, $sizes in variables.$font-sizes {
-		@if $screen == small {
+		@if $screen == initial {
 			@each $size, $value in $sizes {
 				--fz-#{$size}: #{$value};
 			}
 		} @else {
-			@include mixins.mq($screen) {
+			@include mixins.media-query($screen) {
 				@each $size, $value in $sizes {
 					--fz-#{$size}: #{$value};
 				}
