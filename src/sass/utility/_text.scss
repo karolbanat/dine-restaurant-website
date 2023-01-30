@@ -1,5 +1,12 @@
 @use '../abstracts/mixins';
 
+.text-center-sm {
+	text-align: center;
+	@include mixins.media-query(medium) {
+		text-align: start;
+	}
+}
+
 .text-center-md-max {
 	text-align: center;
 	@include mixins.media-query(large) {

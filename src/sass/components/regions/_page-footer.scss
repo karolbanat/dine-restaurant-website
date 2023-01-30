@@ -1,0 +1,23 @@
+@use '../../abstracts/mixins';
+
+.page-footer {
+	--flow-spacer: 0.75em;
+
+	/* sizing */
+	padding-block: 8rem;
+	@include mixins.media-query(medium) {
+		padding-block: 6.4rem;
+	}
+	@include mixins.media-query(large) {
+		padding-block: 7.6rem;
+	}
+
+	/* typography */
+	font-size: var(--fz-300);
+	letter-spacing: var(--ls-400);
+	text-transform: uppercase;
+	color: var(--clr-neutral-100);
+
+	/* appearance */
+	background-color: var(--clr-neutral-800);
+}

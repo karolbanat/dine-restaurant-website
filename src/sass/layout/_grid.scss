@@ -1,0 +1,32 @@
+@use '../abstracts/mixins';
+
+.page-footer-grid {
+	display: grid;
+	gap: 4rem;
+	grid-template-areas:
+		'logo'
+		'address'
+		'times';
+
+	@include mixins.media-query(medium) {
+		grid-template-areas:
+			'logo address'
+			'. times';
+		grid-template-columns: 20rem 1fr;
+	}
+	@include mixins.media-query(large) {
+		grid-template-areas: 'logo address times';
+
+		grid-template-columns: 25rem 1fr 1fr;
+	}
+
+	& > [data-area='logo'] {
+		grid-area: logo;
+	}
+	& > [data-area='address'] {
+		grid-area: address;
+	}
+	& > [data-area='times'] {
+		grid-area: times;
+	}
+}
