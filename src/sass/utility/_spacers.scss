@@ -1,0 +1,13 @@
+@use '../abstracts/mixins';
+
+.content-padding-left-lg {
+	@include mixins.media-query(large) {
+		padding-inline-start: 9.5rem;
+	}
+}
+
+.content-padding-right-lg {
+	@include mixins.media-query(large) {
+		padding-inline-end: 9.5rem;
+	}
+}
