@@ -1,0 +1,23 @@
+@use '../../abstracts/mixins';
+
+.cta {
+	padding-block-start: 8.4rem;
+	padding-block-end: 8rem;
+	@include mixins.media-query(medium) {
+		padding-block-start: 7.2rem;
+		padding-block-end: 6.4rem;
+	}
+	@include mixins.media-query(large) {
+		padding-block: 8.8rem;
+	}
+
+	background-image: url('../assets/images/homepage/ready-bg-mobile.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	@include mixins.media-query(medium) {
+		background-image: url('../assets/images/homepage/ready-bg-tablet.jpg');
+	}
+	@include mixins.media-query(large) {
+		background-image: url('../assets/images/homepage/ready-bg-desktop.jpg');
+	}
+}
