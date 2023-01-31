@@ -1,0 +1,46 @@
+@use '../../abstracts/mixins';
+
+.menu-highlight-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3.6rem;
+	font-size: var(--fz-400);
+	text-align: center;
+	@include mixins.media-query(medium) {
+		flex-direction: row;
+		gap: 6.2rem;
+		text-align: start;
+	}
+
+	&__image-container {
+		@include mixins.media-query(medium) {
+			position: relative;
+			&::after {
+				content: '';
+				position: absolute;
+				right: 0;
+				top: 1.8rem;
+				transform: translateX(100%);
+				width: 3.2rem;
+				height: 1px;
+				background-color: var(--clr-primary-400);
+			}
+		}
+	}
+
+	&__image {
+		max-width: unset;
+	}
+
+	&__heading {
+		font-size: var(--fz-500);
+		font-weight: var(--fw-bold, 700);
+		letter-spacing: var(--ls-200);
+		line-height: 1.2;
+
+		&:not(:last-child) {
+			margin-block-end: 0.375em;
+		}
+	}
+}

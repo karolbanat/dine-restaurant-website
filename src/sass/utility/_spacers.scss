@@ -21,6 +21,12 @@
 	}
 }
 
+.menu-list-padding-top-lg {
+	@include mixins.media-query(large) {
+		padding-block-start: 5.5rem;
+	}
+}
+
 /* margins */
 .image-margin-shift-top {
 	margin-block-start: -7.2rem;

@@ -1,0 +1,19 @@
+@use '../../abstracts/mixins';
+
+.menu-highlight-list {
+	& > li {
+		padding-block: 2.4rem;
+	}
+
+	& > li:not(:last-of-type) {
+		border-bottom: 1px solid hsl(0deg 0% 100% / 0.15);
+	}
+
+	& > li:first-of-type {
+		padding-block-start: 0;
+	}
+
+	& > li:last-of-type {
+		padding-block-end: 0;
+	}
+}
