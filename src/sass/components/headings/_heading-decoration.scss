@@ -1,0 +1,17 @@
+@use '../../abstracts/mixins';
+
+.heading-decoration {
+	&::before {
+		content: '';
+		display: block;
+		margin-block-end: clamp(3.6rem, 5vw, 5.5rem);
+		height: 7px;
+		background-image: url('../assets/images/patterns/pattern-divide.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+
+		@include mixins.media-query(large) {
+			background-position: left;
+		}
+	}
+}
