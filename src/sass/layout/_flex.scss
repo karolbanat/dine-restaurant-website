@@ -30,3 +30,9 @@
 		justify-content: space-between;
 	}
 }
+
+.flex-align-start-lg {
+	@include mixins.media-query(large) {
+		align-items: flex-start;
+	}
+}

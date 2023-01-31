@@ -1,6 +1,14 @@
 @use '../abstracts/mixins';
 
 /* padding */
+.menu-section-padding-block {
+	padding-block: clamp(7.2rem, 12.5vw, 9.6rem);
+	@include mixins.media-query(large) {
+		padding-block-start: 20rem;
+		padding-block-end: 12rem;
+	}
+}
+
 .content-padding-left-lg {
 	@include mixins.media-query(large) {
 		padding-inline-start: 9.5rem;
