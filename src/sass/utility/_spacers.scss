@@ -1,5 +1,6 @@
 @use '../abstracts/mixins';
 
+/* padding */
 .content-padding-left-lg {
 	@include mixins.media-query(large) {
 		padding-inline-start: 9.5rem;
@@ -9,5 +10,35 @@
 .content-padding-right-lg {
 	@include mixins.media-query(large) {
 		padding-inline-end: 9.5rem;
+	}
+}
+
+/* margins */
+.image-margin-shift-top {
+	margin-block-start: -7.2rem;
+	@include mixins.media-query(medium) {
+		margin-block-start: -9.6rem;
+	}
+	@include mixins.media-query(large) {
+		margin-block-start: -7rem;
+	}
+}
+
+.image-margin-shift-bottom-lg {
+	@include mixins.media-query(large) {
+		margin-block-end: -8rem;
+	}
+}
+
+.section-spacer-md-max {
+	margin-block: clamp(10rem, 17.5vw, 11.8rem);
+	@include mixins.media-query(large) {
+		margin-block: 0;
+	}
+}
+
+.section-spacer-top-lg {
+	@include mixins.media-query(large) {
+		margin-block-start: 11.8rem;
 	}
 }
