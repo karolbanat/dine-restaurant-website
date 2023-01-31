@@ -1,5 +1,12 @@
 @use '../abstracts/mixins';
 
+.text-limited {
+	max-width: 39ch;
+	@include mixins.media-query(large) {
+		max-width: 49ch;
+	}
+}
+
 .text-center-sm {
 	text-align: center;
 	@include mixins.media-query(medium) {
