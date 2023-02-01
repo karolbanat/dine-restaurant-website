@@ -1,0 +1,57 @@
+@use '../../abstracts/mixins';
+
+.tab-button {
+	position: relative;
+
+	/* typography */
+	font-size: var(--fz-button);
+	font-weight: var(--fw-semibold, 700);
+	text-transform: uppercase;
+	letter-spacing: var(--ls-400);
+	color: var(--clr-neutral-500);
+
+	/* appearance */
+	background: none;
+	border: none;
+	opacity: 0.5;
+
+	/* other */
+	transition: opacity 0.35s ease-in-out;
+	cursor: pointer;
+
+	&[aria-expanded='true'],
+	&:is(:hover, :focus-visible) {
+		opacity: 1;
+	}
+
+	&::after {
+		--scale: 0;
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%) scaleX(var(--scale));
+		transform-origin: center;
+		@include mixins.media-query(medium) {
+			bottom: -0.8rem;
+		}
+		@include mixins.media-query(large) {
+			bottom: auto;
+			top: 50%;
+			left: -3.2rem;
+			transform: translateX(-100%) translateY(-50%) scaleX(var(--scale));
+			transform-origin: right;
+			width: 10rem;
+		}
+
+		width: 4.8rem;
+		height: 1px;
+		background-color: var(--clr-primary-400);
+		transition: transform 0.35s ease-in-out;
+	}
+
+	&[aria-expanded='true']::after {
+		--scale: 1;
+	}
+}
