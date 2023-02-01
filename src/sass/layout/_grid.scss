@@ -30,3 +30,32 @@
 		grid-area: times;
 	}
 }
+
+.slide-grid {
+	display: grid;
+	gap: clamp(2.8rem, 6.25vw, 7.2rem);
+	justify-items: center;
+	grid-template-areas:
+		'buttons'
+		'content'
+		'link';
+	@include mixins.media-query(large) {
+		justify-items: start;
+		grid-template-areas:
+			'content'
+			'link'
+			'buttons';
+	}
+
+	& > [data-area='content'] {
+		grid-area: content;
+	}
+
+	& > [data-area='buttons'] {
+		grid-area: buttons;
+	}
+
+	& > [data-area='link'] {
+		grid-area: link;
+	}
+}

@@ -31,6 +31,19 @@
 	}
 }
 
+.tab-buttons-flex {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+	@include mixins.media-query(medium) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	@include mixins.media-query(large) {
+		flex-direction: column;
+	}
+}
+
 .flex-align-start-lg {
 	@include mixins.media-query(large) {
 		align-items: flex-start;
