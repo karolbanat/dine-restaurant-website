@@ -189,11 +189,11 @@
         </section>
 
         <!-- Slides section -->
-        <div class="text-neutral-600">
+        <div class="text-center-md-max text-neutral-600">
             <div class="container">
-                <div class="slide-grid">
-                    <!-- Container for tab pictures -->
-                    <div class="slide-image-container">
+                <div class="even-columns-flex">
+                    <!-- Container for slide pictures -->
+                    <div class="slide-content-container slide-image-container">
                         <picture>
                             <source media="(min-width: 992px)"
                                     srcset="./dist/assets/images/homepage/family-gathering-desktop.jpg 1x, ./dist/assets/images/homepage/family-gathering-desktop@2x.jpg 2x">
@@ -203,7 +203,8 @@
                                     srcset="./dist/assets/images/homepage/family-gathering-mobile.jpg 1x, ./dist/assets/images/homepage/family-gathering-mobile@2x.jpg 2x">
                             <img src="./dist/assets/images/homepage/family-gathering-mobile.jpg"
                                  alt="People having dinner at the table ad reaching for tomatos."
-                                 id="family-gathering-image">
+                                 id="family-gathering-image"
+                                 data-expanded="true">
                         </picture>
                         <picture>
                             <source media="(min-width: 992px)"
@@ -214,7 +215,8 @@
                                     srcset="./dist/assets/images/homepage/special-events-mobile.jpg 1x, ./dist/assets/images/homepage/special-events-mobile@2x.jpg 2x">
                             <img src="./dist/assets/images/homepage/special-events-mobile.jpg"
                                  alt="Smiling people rising wine glasses for toast."
-                                 id="special-events-image">
+                                 id="special-events-image"
+                                 data-expanded="false">
                         </picture>
                         <picture>
                             <source media="(min-width: 992px)"
@@ -225,55 +227,63 @@
                                     srcset="./dist/assets/images/homepage/social-events-mobile.jpg 1x, ./dist/assets/images/homepage/social-events-mobile@2x.jpg 2x">
                             <img src="./dist/assets/images/homepage/social-events-mobile.jpg"
                                  alt="Wine glasses and peaople sitting at the table."
-                                 id="social-events-image">
+                                 id="social-events-image"
+                                 data-expanded="false">
                         </picture>
                     </div>
 
-                    <!-- Tabs controlling button -->
-                    <div role="tablist"
-                         class="tab-buttons-flex">
-                        <button aria-selected="true"
-                                aria-controls="family-gathering-image family-gathering-content"
-                                role="tab"
-                                class="tab-button">Family Gathering</button>
-                        <button aria-selected="false"
-                                aria-controls="special-events-image special-events-content"
-                                role="tab"
-                                class="tab-button">Special Events</button>
-                        <button aria-selected="false"
-                                aria-controls="social-events-image social-events-content"
-                                role="tab"
-                                class="tab-button">Social Events</button>
-                    </div>
+                    <div>
+                        <div class="content-padding-left-lg">
+                            <div class="slide-grid">
+                                <!-- Slide controlling buttons -->
+                                <div class="tab-buttons-flex">
+                                    <button aria-expanded="true"
+                                            aria-controls="family-gathering-image family-gathering-content"
+                                            class="tab-button">Family Gathering</button>
+                                    <button aria-expanded="false"
+                                            aria-controls="special-events-image special-events-content"
+                                            class="tab-button">Special Events</button>
+                                    <button aria-expanded="false"
+                                            aria-controls="social-events-image social-events-content"
+                                            class="tab-button">Social Events</button>
+                                </div>
 
-                    <!-- Container for tab text content -->
-                    <div class="slide-content-container">
-                        <section role="tabpanel"
-                                 id="family-gathering-content"
-                                 class="flow">
-                            <h2 class="section-heading">Family Gathering</h2>
-                            <p>We love catering for entire families. So please bring everyone along for a special
-                                meal with your loved ones. We’ll provide a memorable experience for all.</p>
-                        </section>
-                        <section role="tabpanel"
-                                 id="special-events-content"
-                                 class="flow">
-                            <h2 class="section-heading">Special Events</h2>
-                            <p>Whether it’s a romantic dinner or special date you’re celebrating with others we’ll
-                                look after you. We’ll be sure to mark your special date with an unforgettable meal.
-                            </p>
-                        </section>
-                        <section role="tabpanel"
-                                 id="social-events-content"
-                                 class="flow">
-                            <h2 class="section-heading">Social Events</h2>
-                            <p>Are you looking to have a larger social event? No problem! We’re more than happy to
-                                cater for big parties. We’ll work with you to make your event a hit with everyone.
-                            </p>
-                        </section>
-                    </div>
+                                <!-- Container for slide text contents -->
+                                <div class="slide-content-container">
+                                    <section id="family-gathering-content"
+                                             class="flow"
+                                             data-expanded="true">
+                                        <h2 class="section-heading">Family Gathering</h2>
+                                        <p>We love catering for entire families. So please bring everyone along for a
+                                            special
+                                            meal with your loved ones. We’ll provide a memorable experience for all.</p>
+                                    </section>
+                                    <section id="special-events-content"
+                                             class="flow"
+                                             data-expanded="false">
+                                        <h2 class="section-heading">Special Events</h2>
+                                        <p>Whether it’s a romantic dinner or special date you’re celebrating with others
+                                            we’ll
+                                            look after you. We’ll be sure to mark your special date with an
+                                            unforgettable meal.
+                                        </p>
+                                    </section>
+                                    <section id="social-events-content"
+                                             class="flow"
+                                             data-expanded="false">
+                                        <h2 class="section-heading">Social Events</h2>
+                                        <p>Are you looking to have a larger social event? No problem! We’re more than
+                                            happy to
+                                            cater for big parties. We’ll work with you to make your event a hit with
+                                            everyone.
+                                        </p>
+                                    </section>
+                                </div>
 
-                    <button class="button button--dark">Book a table</button>
+                                <a class="button button--dark">Book a table</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
