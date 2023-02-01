@@ -40,4 +40,13 @@
 		--button-text-hover: var(--clr-neutral-800);
 		--button-border-clr-hover: var(--button-bg-hover);
 	}
+
+	&--dark {
+		--button-bg: var(--clr-neutral-800);
+		--button-text: var(--clr-neutral-100);
+		--button-border-clr: var(--button-bg);
+		--button-bg-hover: var(--clr-neutral-100);
+		--button-text-hover: var(--clr-neutral-800);
+		--button-border-clr-hover: var(--button-text-hover);
+	}
 }
