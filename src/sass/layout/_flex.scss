@@ -38,10 +38,12 @@
 	@include mixins.media-query(medium) {
 		flex-direction: row;
 		justify-content: space-between;
+		gap: 3.2rem;
 	}
 	@include mixins.media-query(large) {
 		flex-direction: column;
 		align-items: flex-start;
+		gap: 1.2rem;
 	}
 }
 

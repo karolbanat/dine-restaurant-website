@@ -9,6 +9,14 @@
 	}
 }
 
+.slides-section-padding-block {
+	padding-block-start: 8rem;
+	padding-block-end: 12.4rem;
+	@include mixins.media-query(medium) {
+		padding-block: clamp(12rem, 12.5vw, 16rem);
+	}
+}
+
 .content-padding-left-lg {
 	@include mixins.media-query(large) {
 		padding-inline-start: 9.5rem;
