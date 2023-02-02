@@ -27,29 +27,154 @@
 
 <body>
 
-    Reservations
+    <header>
+        <div class="container | text-center-sm">
+            <a href="#">
+                <img src="./dist/assets/images/logo.svg"
+                     alt="dine">
+            </a>
+        </div>
+    </header>
 
-    We can’t wait to host you. If you have any special requirements please feel free to
-    call on the phone number below. We’ll be happy to accommodate you.
+    <main>
+        <section>
+            <div class="container">
+                <div class="even-columns-flex flex-align-start-lg">
+                    <header class="flow text-center-md-max">
+                        <div class="content-padding-right-lg">
+                            <h1 class="primary-heading">Reservation</h1>
+                            <p class="text-limited">We can’t wait to host you. If you have any special requirements
+                                please
+                                feel free to call on the phone number below. We’ll be happy to accommodate you.</p>
+                        </div>
+                    </header>
 
+                    <div>
+                        <form class="reservation-form">
+                            <div class="form-group">
+                                <label for="name"
+                                       class="visually-hidden">Name</label>
+                                <input id="name"
+                                       name="name"
+                                       type="text"
+                                       placeholder="Name"
+                                       class="form-input">
+                            </div>
 
+                            <div class="form-group">
+                                <label for="email"
+                                       class="visually-hidden">Email</label>
+                                <input id="email"
+                                       name="email"
+                                       type="email"
+                                       placeholder="Email"
+                                       class="form-input">
+                            </div>
 
-    Name
-    Email
-    Pick a date
-    Pick a time
+                            <fieldset class="reservation-form__fieldset">
+                                <legend>Pick a date</legend>
+                                <div class="form-group">
+                                    <label for="month"
+                                           class="visually-hidden">Month</label>
+                                    <input id="month"
+                                           name="month"
+                                           type="text"
+                                           placeholder="MM"
+                                           pattern="(0[1-9])|(1[0-2])"
+                                           class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="day"
+                                           class="visually-hidden">Day</label>
+                                    <input id="day"
+                                           name="day"
+                                           type="text"
+                                           placeholder="DD"
+                                           pattern="(0[1-9])|([1-2]\d)|(3[0-1])"
+                                           class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="year"
+                                           class="visually-hidden">Year</label>
+                                    <input id="year"
+                                           name="year"
+                                           type="text"
+                                           placeholder="YYYY"
+                                           pattern="\d{4}"
+                                           class="form-input">
+                                </div>
+                            </fieldset>
 
-    Make Reservation
+                            <fieldset class="reservation-form__fieldset">
+                                <legend>Pick a time</legend>
+                                <div class="form-group">
+                                    <label for="hour"
+                                           class="visually-hidden">Hour</label>
+                                    <input id="hour"
+                                           name="hour"
+                                           type="text"
+                                           placeholder="09"
+                                           pattern="([1-2]\d)|(2[0-3])"
+                                           class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="minute"
+                                           class="visually-hidden">Minutes</label>
+                                    <input id="minute"
+                                           name="minute"
+                                           type="text"
+                                           placeholder="00"
+                                           pattern="([0-5]\d)"
+                                           class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <!-- TODO: custom select -->
+                                    <select name="time"
+                                            id="time">
+                                        <option value="am"
+                                                selected>AM</option>
+                                        <option value="pm">PM</option>
+                                    </select>
+                                </div>
+                            </fieldset>
 
+                            <div class="form-group">
+                                <!-- TODO: people counter -->
+                            </div>
 
+                            <button type="submit"
+                                    class="button button--dark">Make reservation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    Marthwaite, Sedbergh
-    Cumbria
-    +00 44 123 4567
-
-    Open Times
-    Mon - Fri: 09:00 AM - 10:00 PM
-    Sat - Sun: 09:00 AM - 11:30 PM
+    <footer class="page-footer | text-center-sm">
+        <div class="container">
+            <div class="page-footer-grid">
+                <div data-area="logo">
+                    <a href="#">
+                        <img src="./dist/assets/images/logo.svg"
+                             alt="dine">
+                    </a>
+                </div>
+                <address data-area="address"
+                         class="flow">
+                    <p>Marthwaite, Sedbergh</p>
+                    <p>Cumbria</p>
+                    <p>+00 44 123 4567</p>
+                </address>
+                <div data-area="times"
+                     class="flow">
+                    <p>Open Times</p>
+                    <p>Mon - Fri: 09:00 AM - 10:00 PM</p>
+                    <p>Sat - Sun: 09:00 AM - 11:30 PM</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
