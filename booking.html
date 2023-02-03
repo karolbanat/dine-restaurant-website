@@ -139,7 +139,27 @@
                             </fieldset>
 
                             <div class="form-group">
-                                <!-- TODO: people counter -->
+                                <div class="spinbutton">
+                                    <button aria-label="Decrease number of people"
+                                            tabindex="-1"
+                                            class="spinbutton__button">
+                                        <img src="./dist/assets/images/icons/icon-minus.svg"
+                                             alt="">
+                                    </button>
+                                    <p aria-valuenow="4"
+                                       aria-valuemin="1"
+                                       aria-valuemax="20"
+                                       aria-valuetext="4 people"
+                                       aria-label="Number of people"
+                                       role="spinbutton"
+                                       tabindex="0">4 people</p>
+                                    <button aria-label="Increase number of people"
+                                            tabindex="-1"
+                                            class="spinbutton__button">
+                                        <img src="./dist/assets/images/icons/icon-plus.svg"
+                                             alt="">
+                                    </button>
+                                </div>
                             </div>
 
                             <button type="submit"
