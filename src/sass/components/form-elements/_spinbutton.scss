@@ -1,0 +1,21 @@
+.spinbutton {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-block-start: 0.2rem;
+	padding-block-end: 1.4rem;
+	border-bottom: 1px solid hsl(0deg 0% 56%);
+
+	&__label {
+		font-weight: var(--fw-bold, 700);
+		letter-spacing: var(--ls-200);
+	}
+
+	&__button {
+		padding-block: 1rem;
+		padding-inline: 2rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+}
