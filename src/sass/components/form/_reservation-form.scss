@@ -1,0 +1,40 @@
+@use '../../abstracts/mixins';
+
+.reservation-form {
+	/* layout */
+	display: grid;
+	gap: 3.2rem;
+
+	/* sizing */
+	padding: clamp(3.2rem, 6.25vw, 4.8rem);
+	max-width: 54rem;
+
+	/* typography */
+	font-size: var(--fz-500);
+	color: var(--clr-neutral-800);
+
+	/* appearance */
+	background-color: var(--clr-neutral-100);
+	box-shadow: 0 7.5rem 10rem hsl(219deg 21% 28% / 0.5);
+
+	fieldset {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: repeat(2, 1fr) 1.2fr;
+		gap: 1.6rem;
+		border: none;
+
+		@include mixins.media-query(medium) {
+			grid-template-columns: 14rem repeat(2, 1fr) 1.2fr;
+			align-items: center;
+		}
+	}
+
+	fieldset > legend {
+		margin-block-end: 0.8rem;
+		@include mixins.media-query(medium) {
+			float: left;
+			margin-block-end: 0;
+		}
+	}
+}

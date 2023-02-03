@@ -49,4 +49,8 @@
 		--button-text-hover: var(--clr-neutral-800);
 		--button-border-clr-hover: var(--button-text-hover);
 	}
+
+	&--thin {
+		padding-inline: 1em;
+	}
 }

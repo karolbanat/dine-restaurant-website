@@ -1,0 +1,16 @@
+.form-input {
+	padding-block-start: 0.2rem;
+	padding-block-end: 1.4rem;
+	padding-inline: 1.6rem;
+
+	width: 100%;
+	max-width: 100%;
+
+	background: none;
+	border: none;
+	border-bottom: 1px solid hsl(0deg 0% 56%);
+
+	&::placeholder {
+		opacity: 0.5;
+	}
+}
