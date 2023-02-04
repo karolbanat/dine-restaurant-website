@@ -128,19 +128,26 @@
                                            class="form-input">
                                 </div>
                                 <div class="form-group">
-                                    <!-- TODO: custom select -->
-                                    <select name="time"
-                                            id="time">
-                                        <option value="am"
-                                                selected>AM</option>
-                                        <option value="pm">PM</option>
-                                    </select>
+                                    <label for="time-select"
+                                           class="visually-hidden">Day time</label>
+                                    <div class="custom-select">
+                                        <select name="time"
+                                                id="time-select">
+                                            <option value="am"
+                                                    selected>AM</option>
+                                            <option value="pm">PM</option>
+                                        </select>
+                                        <span class="focus"></span>
+                                        <div aria-hidden="true"
+                                             class="custom-select__options"></div>
+                                    </div>
                                 </div>
                             </fieldset>
 
                             <div class="form-group">
                                 <div class="spinbutton">
                                     <button aria-label="Decrease number of people"
+                                            type="button"
                                             tabindex="-1"
                                             class="spinbutton__button">
                                         <img src="./dist/assets/images/icons/icon-minus.svg"
@@ -155,6 +162,7 @@
                                        tabindex="0"
                                        class="spinbutton__label">4 people</p>
                                     <button aria-label="Increase number of people"
+                                            type="button"
                                             tabindex="-1"
                                             class="spinbutton__button">
                                         <img src="./dist/assets/images/icons/icon-plus.svg"
