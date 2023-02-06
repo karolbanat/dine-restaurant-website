@@ -1,9 +1,0 @@
-@use '../abstracts/variables';
-
-@each $colour, $shades in variables.$colors {
-	@each $shade, $value in $shades {
-		.bg-#{$colour}-#{$shade} {
-			background-color: $value;
-		}
-	}
-}

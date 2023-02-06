@@ -1,0 +1,24 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+@each $colour, $shades in variables.$colors {
+	@each $shade, $value in $shades {
+		.bg-#{$colour}-#{$shade} {
+			background-color: $value;
+		}
+	}
+}
+
+/* background images */
+.reservation-page-background {
+	background-image: url('../assets/images/booking/hero-bg-mobile.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+
+	@include mixins.media-query(small) {
+		background-image: url('../assets/images/booking/hero-bg-tablet.jpg');
+	}
+	@include mixins.media-query(large) {
+		background-image: url('../assets/images/booking/hero-bg-desktop.jpg');
+	}
+}
