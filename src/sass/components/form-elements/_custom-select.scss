@@ -1,0 +1,46 @@
+@use '../../abstracts/mixins';
+@use './form-input';
+@use '../../utility/visually-hidden';
+
+.custom-select {
+	position: relative;
+
+	select {
+		@extend .visually-hidden;
+	}
+
+	select:is(:hover, :focus) ~ &__focus {
+		outline: currentColor;
+	}
+
+	select:is(:hover, :focus) ~ &__options {
+		display: block;
+	}
+
+	&__focus {
+		@extend .form-input;
+
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	&__options {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: calc(100% + 0.8rem);
+		min-width: 100%;
+		padding: 1.6rem;
+		background-color: var(--clr-neutral-100);
+		box-shadow: 0 1.5rem 2.5rem hsl(219deg 21% 28% / 0.25);
+	}
+
+	&__option {
+		display: inline-flex;
+		align-items: center;
+		gap: 1.6rem;
+		cursor: pointer;
+	}
+}
