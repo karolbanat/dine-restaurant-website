@@ -35,6 +35,18 @@
 	}
 }
 
+.reservation-header-padding {
+	padding-block-start: 5.6rem;
+	@include mixins.media-query(large) {
+		padding-block-start: 6.4rem;
+	}
+}
+
+.reservation-section-padding {
+	padding-block-start: clamp(4.4rem, 10vw, 15rem);
+	padding-block-end: clamp(8.6rem, 15vw, 12rem);
+}
+
 /* margins */
 .image-margin-shift-top {
 	margin-block-start: -7.2rem;
