@@ -10,7 +10,8 @@
 	}
 
 	select:is(:hover, :focus) ~ &__focus {
-		outline: currentColor;
+		outline: 1px solid currentColor;
+		outline-offset: 2px;
 	}
 
 	select:is(:hover, :focus) ~ &__options {
@@ -42,5 +43,13 @@
 		align-items: center;
 		gap: 1.6rem;
 		cursor: pointer;
+
+		& img {
+			opacity: 0;
+		}
+
+		&[data-selected='true'] img {
+			opacity: 1;
+		}
 	}
 }

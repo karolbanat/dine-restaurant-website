@@ -1,5 +1,5 @@
 {
-	"files": ["./src/ts/slides.ts"],
+	"files": ["./src/ts/slides.ts", "./src/ts/reservation-form.ts"],
 	"compilerOptions": {
 		"noImplicitAny": true,
 		"target": "es2015",
