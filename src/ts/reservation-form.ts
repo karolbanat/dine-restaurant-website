@@ -1,17 +1,25 @@
+/* custom select elements */
 const customSelect: HTMLElement = document.querySelector('.custom-select');
 const originalSelect: HTMLSelectElement = customSelect.querySelector('select');
 const originalSelectOptions: Array<HTMLOptionElement> = Array.from(originalSelect.querySelectorAll('option'));
-
 const customSelectFocus: HTMLElement = customSelect.querySelector('.custom-select__focus');
 const customSelectFocusText: HTMLElement = customSelectFocus.querySelector('span');
 const customSelectOptionsContainer: HTMLElement = customSelect.querySelector('.custom-select__options');
 let customSelectOptions: Array<HTMLElement> = [];
 
+/* spinbutton elements */
+const customSpinbutton: HTMLElement = document.querySelector('.spinbutton');
+const spinButton: HTMLElement = customSpinbutton.querySelector('[role="spinbutton"]');
+const decreaseSpinbutton: HTMLButtonElement = customSpinbutton.querySelector('#decrease-people');
+const increaseSpinbutton: HTMLButtonElement = customSpinbutton.querySelector('#increase-people');
+
+/* constants */
 const CHECK_ICON_URL: string = './dist/assets/images/icons/icon-check.svg';
 
 createCustomSelectOptions();
 
 /* event listeners */
+/* --- for custom select */
 originalSelect.addEventListener('keyup', (e: KeyboardEvent) => {
 	switch (e.key) {
 		case 'ArrowUp':
@@ -31,7 +39,13 @@ customSelectFocus.addEventListener('click', (e: Event) => {
 
 originalSelect.addEventListener('focusin', openCustomSelect);
 
+/* --- for spinbutton */
+spinButton.addEventListener('keydown', handleSpinButton);
+increaseSpinbutton.addEventListener('click', increasePeople);
+decreaseSpinbutton.addEventListener('click', decreasePeople);
+
 /* helper functions */
+/* --- for custom select */
 function createCustomSelectOptions(): void {
 	originalSelectOptions.forEach(option => {
 		const customOption: HTMLElement = createCustomOption(option);
@@ -81,4 +95,56 @@ function openCustomSelect(): void {
 
 function closeCustomSelect(): void {
 	customSelect.dataset.open = 'false';
+}
+
+/* --- for spinbutton */
+function handleSpinButton(e: KeyboardEvent): void {
+	switch (e.key) {
+		case 'ArrowUp':
+			e.preventDefault();
+			increasePeople();
+			break;
+		case 'ArrowDown':
+			e.preventDefault();
+			decreasePeople();
+			break;
+		case 'Home':
+			e.preventDefault();
+			setMinPeople();
+			break;
+		case 'End':
+			e.preventDefault();
+			setMaxPeople();
+			break;
+	}
+}
+
+function increasePeople(): void {
+	const currentValue: number = Number(spinButton.getAttribute('aria-valuenow'));
+	const maxValue: number = Number(spinButton.getAttribute('aria-valuemax'));
+	const newValue: number = Math.min(currentValue + 1, maxValue);
+	updateSpinButton(newValue);
+}
+
+function decreasePeople(): void {
+	const currentValue: number = Number(spinButton.getAttribute('aria-valuenow'));
+	const minValue: number = Number(spinButton.getAttribute('aria-valuemin'));
+	const newValue: number = Math.max(currentValue - 1, minValue);
+	updateSpinButton(newValue);
+}
+
+function setMaxPeople() {
+	const maxValue: number = Number(spinButton.getAttribute('aria-valuemax'));
+	updateSpinButton(maxValue);
+}
+
+function setMinPeople() {
+	const minValue: number = Number(spinButton.getAttribute('aria-valuemin'));
+	updateSpinButton(minValue);
+}
+
+function updateSpinButton(newValue: number): void {
+	spinButton.setAttribute('aria-valuenow', newValue.toString());
+	spinButton.setAttribute('aria-valuetext', `${newValue} people`);
+	spinButton.innerText = `${newValue} people`;
 }
