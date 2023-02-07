@@ -14,8 +14,12 @@
 		outline-offset: 2px;
 	}
 
-	select:is(:hover, :focus) ~ &__options {
-		display: block;
+	&[data-open='true'] &__focus img {
+		transform: rotate(-180deg);
+	}
+
+	&:not([data-open='true']) &__options {
+		display: none;
 	}
 
 	&__focus {
@@ -25,10 +29,19 @@
 		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
+
+		& * {
+			pointer-events: none;
+		}
+
+		& img {
+			transition: transform 350ms ease-in-out;
+		}
 	}
 
 	&__options {
-		display: none;
+		display: grid;
+		gap: 1.6rem;
 		position: absolute;
 		left: 0;
 		top: calc(100% + 0.8rem);
@@ -44,8 +57,16 @@
 		gap: 1.6rem;
 		cursor: pointer;
 
+		& * {
+			pointer-events: none;
+		}
+
 		& img {
 			opacity: 0;
+		}
+
+		&.focused {
+			outline: 1px solid red;
 		}
 
 		&[data-selected='true'] img {
