@@ -28,6 +28,10 @@ const reservationSubmitBtn: HTMLButtonElement = reservationForm.querySelector('b
 const CHECK_ICON_URL: string = './dist/assets/images/icons/icon-check.svg';
 const EMAIL_REGEX =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const DAY_REGEX = /^(0[1-9])|([1-2]\d)|(3[0-1])$/;
+const MAX_DAYS_IN_MONTH = 31;
+const MONTH_REGEX = /^(0[1-9])|(1[0-2])$/;
+const YEAR_REGEX = /^\d{4}$/;
 
 createCustomSelectOptions();
 
@@ -62,6 +66,7 @@ reservationSubmitBtn.addEventListener('click', (e: Event) => {
 	e.preventDefault();
 	validateName();
 	validateEmail();
+	validateDate();
 });
 
 /* helper functions */
@@ -170,6 +175,7 @@ function updateSpinButton(newValue: number): void {
 }
 
 /* --- for form validation */
+/* --- --- name validation */
 function validateName(): boolean {
 	const nameValue: string = nameInput.value;
 
@@ -178,6 +184,7 @@ function validateName(): boolean {
 	return removeFormError(nameInput);
 }
 
+/* --- --- email validation */
 function validateEmail(): boolean {
 	const emailValue: string = emailInput.value;
 
@@ -187,6 +194,79 @@ function validateEmail(): boolean {
 	return removeFormError(emailInput);
 }
 
+function isValidEmail(email: string) {
+	return EMAIL_REGEX.test(email);
+}
+
+/* --- --- date validation */
+function validateDate(): boolean {
+	if (validateDay() && validateMonth() && validateYear()) {
+		const day: number = Number(dayInput.value);
+		const month: number = Number(monthInput.value);
+		const year: number = Number(yearInput.value);
+
+		if (new Date(year, month - 1, day) <= new Date()) return displayFormError(yearInput, 'Insert date after today');
+
+		return removeFormError(yearInput);
+	} else {
+		return false;
+	}
+}
+
+function validateDay(): boolean {
+	const dayValue: string = dayInput.value;
+
+	if (isBlank(dayValue)) return displayFormError(dayInput, 'This field is incomplete');
+	if (!isValidDay(dayValue)) return displayFormError(dayInput, 'Insert valid day value (01 - 31)');
+	if (!isDayWithinMonthRange(dayValue)) return displayFormError(dayInput, 'Insert day in range of selected month.');
+
+	return removeFormError(dayInput);
+}
+
+function isDayWithinMonthRange(day: string): boolean {
+	const month: string = monthInput.value;
+	const year: string = yearInput.value;
+
+	if (!year || !month) return true;
+	const monthDays: number = new Date(Number(year), Number(month), 0).getDate() || MAX_DAYS_IN_MONTH;
+	return Number(day) <= monthDays;
+}
+
+function validateMonth(): boolean {
+	const monthValue: string = monthInput.value;
+
+	if (isBlank(monthValue)) return displayFormError(monthInput, 'This field is incomplete');
+	if (!isValidMonth(monthValue)) return displayFormError(monthInput, 'Insert valid month value (01 - 12)');
+
+	return removeFormError(monthInput);
+}
+
+function validateYear(): boolean {
+	const yearValue: string = yearInput.value;
+
+	if (isBlank(yearValue)) return displayFormError(yearInput, 'This field is incomplete');
+	if (!isValidYear(yearValue)) return displayFormError(yearInput, 'Insert valid year (4 digit number)');
+
+	return removeFormError(yearInput);
+}
+
+function isValidDay(day: string) {
+	return DAY_REGEX.test(day);
+}
+
+function isValidMonth(month: string) {
+	return MONTH_REGEX.test(month);
+}
+
+function isValidYear(year: string) {
+	return YEAR_REGEX.test(year);
+}
+
+/* --- --- general form validation */
+function isBlank(value: string): boolean {
+	return value === '';
+}
+/* --- --- form error displaying */
 function displayFormError(input: HTMLInputElement, message: string): boolean {
 	let formGroup: HTMLElement = input.closest('.form-group');
 	let formError: HTMLElement;
@@ -220,12 +300,4 @@ function removeFormError(input: HTMLInputElement): boolean {
 	}
 
 	return true;
-}
-
-function isBlank(value: string): boolean {
-	return value === '';
-}
-
-function isValidEmail(email: string) {
-	return EMAIL_REGEX.test(email);
 }
