@@ -1,0 +1,9 @@
+.form-group {
+	&.error {
+		--form-colour: var(--clr-accent-400);
+	}
+
+	&.error > .form-error {
+		display: block;
+	}
+}

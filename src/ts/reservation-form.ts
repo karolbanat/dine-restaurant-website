@@ -13,6 +13,16 @@ const spinButton: HTMLElement = customSpinbutton.querySelector('[role="spinbutto
 const decreaseSpinbutton: HTMLButtonElement = customSpinbutton.querySelector('#decrease-people');
 const increaseSpinbutton: HTMLButtonElement = customSpinbutton.querySelector('#increase-people');
 
+/* form elements */
+const reservationForm: HTMLFormElement = document.querySelector('.reservation-form');
+const nameInput: HTMLInputElement = reservationForm.querySelector('input[name="name"]');
+const emailInput: HTMLInputElement = reservationForm.querySelector('input[name="email"]');
+const monthInput: HTMLInputElement = reservationForm.querySelector('input[name="month"]');
+const dayInput: HTMLInputElement = reservationForm.querySelector('input[name="day"]');
+const yearInput: HTMLInputElement = reservationForm.querySelector('input[name="year"]');
+const hourInput: HTMLInputElement = reservationForm.querySelector('input[name="hour"]');
+const minutesInput: HTMLInputElement = reservationForm.querySelector('input[name="minute"]');
+
 /* constants */
 const CHECK_ICON_URL: string = './dist/assets/images/icons/icon-check.svg';
 
@@ -147,4 +157,9 @@ function updateSpinButton(newValue: number): void {
 	spinButton.setAttribute('aria-valuenow', newValue.toString());
 	spinButton.setAttribute('aria-valuetext', `${newValue} people`);
 	spinButton.innerText = `${newValue} people`;
+}
+
+/* --- for form validation */
+function isBlank(value: string): boolean {
+	return value !== '';
 }

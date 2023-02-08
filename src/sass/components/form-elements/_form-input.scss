@@ -6,9 +6,10 @@
 	width: 100%;
 	max-width: 100%;
 
+	color: var(--form-colour, currentColor);
 	background: none;
 	border: none;
-	border-bottom: 1px solid hsl(0deg 0% 56%);
+	border-bottom: 1px solid var(--form-colour, hsl(0deg 0% 56%));
 
 	&::placeholder {
 		opacity: 0.5;

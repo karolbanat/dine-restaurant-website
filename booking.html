@@ -59,6 +59,7 @@
                                        type="text"
                                        placeholder="Name"
                                        class="form-input">
+                                <p class="form-error"></p>
                             </div>
 
                             <div class="form-group">
@@ -69,86 +70,93 @@
                                        type="email"
                                        placeholder="Email"
                                        class="form-input">
+                                <p class="form-error"></p>
                             </div>
 
-                            <fieldset class="reservation-form__fieldset">
-                                <legend>Pick a date</legend>
-                                <div class="form-group">
-                                    <label for="month"
-                                           class="visually-hidden">Month</label>
-                                    <input id="month"
-                                           name="month"
-                                           type="text"
-                                           placeholder="MM"
-                                           pattern="(0[1-9])|(1[0-2])"
-                                           class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="day"
-                                           class="visually-hidden">Day</label>
-                                    <input id="day"
-                                           name="day"
-                                           type="text"
-                                           placeholder="DD"
-                                           pattern="(0[1-9])|([1-2]\d)|(3[0-1])"
-                                           class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="year"
-                                           class="visually-hidden">Year</label>
-                                    <input id="year"
-                                           name="year"
-                                           type="text"
-                                           placeholder="YYYY"
-                                           pattern="\d{4}"
-                                           class="form-input">
-                                </div>
-                            </fieldset>
+                            <div class="form-group">
+                                <fieldset class="reservation-form__fieldset">
+                                    <legend>Pick a date</legend>
+                                    <div class="form-group">
+                                        <label for="month"
+                                               class="visually-hidden">Month</label>
+                                        <input id="month"
+                                               name="month"
+                                               type="text"
+                                               placeholder="MM"
+                                               pattern="(0[1-9])|(1[0-2])"
+                                               class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="day"
+                                               class="visually-hidden">Day</label>
+                                        <input id="day"
+                                               name="day"
+                                               type="text"
+                                               placeholder="DD"
+                                               pattern="(0[1-9])|([1-2]\d)|(3[0-1])"
+                                               class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="year"
+                                               class="visually-hidden">Year</label>
+                                        <input id="year"
+                                               name="year"
+                                               type="text"
+                                               placeholder="YYYY"
+                                               pattern="\d{4}"
+                                               class="form-input">
+                                    </div>
+                                </fieldset>
+                                <p class="form-error"></p>
+                            </div>
 
-                            <fieldset class="reservation-form__fieldset">
-                                <legend>Pick a time</legend>
-                                <div class="form-group">
-                                    <label for="hour"
-                                           class="visually-hidden">Hour</label>
-                                    <input id="hour"
-                                           name="hour"
-                                           type="text"
-                                           placeholder="09"
-                                           pattern="([1-2]\d)|(2[0-3])"
-                                           class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="minute"
-                                           class="visually-hidden">Minutes</label>
-                                    <input id="minute"
-                                           name="minute"
-                                           type="text"
-                                           placeholder="00"
-                                           pattern="([0-5]\d)"
-                                           class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="time-select"
-                                           class="visually-hidden">Day time</label>
-                                    <div class="custom-select"
-                                         data-open="false">
-                                        <select name="time"
-                                                id="time-select">
-                                            <option value="am"
-                                                    selected>AM</option>
-                                            <option value="pm">PM</option>
-                                        </select>
-                                        <div class="custom-select__focus">
-                                            <span>AM</span>
-                                            <img src="./dist/assets/images/icons/icon-arrow.svg"
-                                                 alt="">
-                                        </div>
-                                        <div aria-hidden="true"
-                                             class="custom-select__options">
+                            <div class="form-group">
+                                <fieldset class="reservation-form__fieldset">
+                                    <legend>Pick a time</legend>
+                                    <div class="form-group">
+                                        <label for="hour"
+                                               class="visually-hidden">Hour</label>
+                                        <input id="hour"
+                                               name="hour"
+                                               type="text"
+                                               placeholder="09"
+                                               pattern="(0[1-9])|(1[0-2])"
+                                               class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="minute"
+                                               class="visually-hidden">Minutes</label>
+                                        <input id="minute"
+                                               name="minute"
+                                               type="text"
+                                               placeholder="00"
+                                               pattern="([0-5]\d)"
+                                               class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="time-select"
+                                               class="visually-hidden">Day time</label>
+                                        <div class="custom-select"
+                                             data-open="false">
+                                            <select name="time"
+                                                    id="time-select">
+                                                <option value="am"
+                                                        selected>AM</option>
+                                                <option value="pm">PM</option>
+                                            </select>
+                                            <div class="custom-select__focus">
+                                                <span>AM</span>
+                                                <img src="./dist/assets/images/icons/icon-arrow.svg"
+                                                     alt="">
+                                            </div>
+                                            <div aria-hidden="true"
+                                                 class="custom-select__options">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </fieldset>
+                                </fieldset>
+                                <p class="form-error"></p>
+                            </div>
 
                             <div class="form-group">
                                 <div class="spinbutton">
