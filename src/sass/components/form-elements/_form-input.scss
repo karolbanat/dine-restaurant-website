@@ -12,6 +12,7 @@
 	border-bottom: 1px solid var(--form-colour, hsl(0deg 0% 56%));
 
 	&::placeholder {
+		color: var(--form-colour, currentColor);
 		opacity: 0.5;
 	}
 }

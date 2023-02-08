@@ -32,6 +32,12 @@ const DAY_REGEX = /^(0[1-9])|([1-2]\d)|(3[0-1])$/;
 const MAX_DAYS_IN_MONTH = 31;
 const MONTH_REGEX = /^(0[1-9])|(1[0-2])$/;
 const YEAR_REGEX = /^\d{4}$/;
+const HOUR_REGEX = /^(0[1-9])|(1[0-2])$/;
+const MINUTES_REGEX = /^([0-5]\d)$/;
+const MONDAY_CODE = 1;
+const FRIDAY_CODE = 5;
+const SATURDAY_CODE = 6;
+const SUNDAY_CODE = 0;
 
 createCustomSelectOptions();
 
@@ -67,6 +73,7 @@ reservationSubmitBtn.addEventListener('click', (e: Event) => {
 	validateName();
 	validateEmail();
 	validateDate();
+	validateTime();
 });
 
 /* helper functions */
@@ -158,12 +165,12 @@ function decreasePeople(): void {
 	updateSpinButton(newValue);
 }
 
-function setMaxPeople() {
+function setMaxPeople(): void {
 	const maxValue: number = Number(spinButton.getAttribute('aria-valuemax'));
 	updateSpinButton(maxValue);
 }
 
-function setMinPeople() {
+function setMinPeople(): void {
 	const minValue: number = Number(spinButton.getAttribute('aria-valuemin'));
 	updateSpinButton(minValue);
 }
@@ -194,7 +201,7 @@ function validateEmail(): boolean {
 	return removeFormError(emailInput);
 }
 
-function isValidEmail(email: string) {
+function isValidEmail(email: string): boolean {
 	return EMAIL_REGEX.test(email);
 }
 
@@ -205,12 +212,12 @@ function validateDate(): boolean {
 		const month: number = Number(monthInput.value);
 		const year: number = Number(yearInput.value);
 
-		if (new Date(year, month - 1, day) <= new Date()) return displayFormError(yearInput, 'Insert date after today');
+		if (!isDateAfterToday(year, month, day)) return displayFormError(yearInput, 'Insert date after today');
 
 		return removeFormError(yearInput);
-	} else {
-		return false;
 	}
+
+	return false;
 }
 
 function validateDay(): boolean {
@@ -221,6 +228,10 @@ function validateDay(): boolean {
 	if (!isDayWithinMonthRange(dayValue)) return displayFormError(dayInput, 'Insert day in range of selected month.');
 
 	return removeFormError(dayInput);
+}
+
+function isDateAfterToday(year: number, month: number, day: number): boolean {
+	return new Date(year, month - 1, day) > new Date();
 }
 
 function isDayWithinMonthRange(day: string): boolean {
@@ -250,16 +261,82 @@ function validateYear(): boolean {
 	return removeFormError(yearInput);
 }
 
-function isValidDay(day: string) {
+function isValidDay(day: string): boolean {
 	return DAY_REGEX.test(day);
 }
 
-function isValidMonth(month: string) {
+function isValidMonth(month: string): boolean {
 	return MONTH_REGEX.test(month);
 }
 
-function isValidYear(year: string) {
+function isValidYear(year: string): boolean {
 	return YEAR_REGEX.test(year);
+}
+
+/* --- --- time validation */
+function validateTime(): boolean {
+	if (validateHour() && validateMinutes()) {
+		if (!isTimeBetweenOpenHours()) return displayFormError(hourInput, 'Insert time between open hours');
+
+		return removeFormError(hourInput);
+	}
+
+	return false;
+}
+
+function isTimeBetweenOpenHours(): boolean {
+	const hour: number = Number(hourInput.value);
+	const minutes: number = Number(minutesInput.value);
+	const date: Date = new Date(Number(yearInput.value), Number(monthInput.value) - 1, Number(dayInput.value));
+	const weekDay: number = date.getDay();
+	const dayTime: string = originalSelect.value;
+
+	if (Number.isNaN(hour) || Number.isNaN(minutes)) return false;
+	if (Number.isNaN(weekDay)) return false;
+
+	if (dayTime === 'am') return isBetweenMorningHours(hour);
+	else return isBetweenAfternoonHours(hour, minutes, weekDay);
+}
+
+function isBetweenMorningHours(hour: number): boolean {
+	return hour >= 9 && hour < 12;
+}
+
+function isBetweenAfternoonHours(hour: number, minutes: number, weekDayCode: number): boolean {
+	if (weekDayCode <= FRIDAY_CODE && weekDayCode >= MONDAY_CODE) {
+		return hour === 12 || hour < 10;
+	}
+	if (weekDayCode === SATURDAY_CODE || weekDayCode === SUNDAY_CODE) {
+		return hour === 12 || hour < 11 || (hour === 11 && minutes < 30);
+	}
+
+	return true;
+}
+
+function validateHour(): boolean {
+	const hourValue: string = hourInput.value;
+
+	if (isBlank(hourValue)) return displayFormError(hourInput, 'This field is incomplete');
+	if (!isValidHour(hourValue)) return displayFormError(hourInput, 'Insert valid hour format (01 - 12)');
+
+	return removeFormError(hourInput);
+}
+
+function validateMinutes(): boolean {
+	const minutesValue: string = minutesInput.value;
+
+	if (isBlank(minutesValue)) return displayFormError(minutesInput, 'This field is incomplete');
+	if (!areValidMinutes(minutesValue)) return displayFormError(minutesInput, 'Insert valid minutes format (00 - 59)');
+
+	return removeFormError(minutesInput);
+}
+
+function isValidHour(hour: string): boolean {
+	return HOUR_REGEX.test(hour);
+}
+
+function areValidMinutes(minutes: string): boolean {
+	return MINUTES_REGEX.test(minutes);
 }
 
 /* --- --- general form validation */
