@@ -22,9 +22,12 @@ const dayInput: HTMLInputElement = reservationForm.querySelector('input[name="da
 const yearInput: HTMLInputElement = reservationForm.querySelector('input[name="year"]');
 const hourInput: HTMLInputElement = reservationForm.querySelector('input[name="hour"]');
 const minutesInput: HTMLInputElement = reservationForm.querySelector('input[name="minute"]');
+const reservationSubmitBtn: HTMLButtonElement = reservationForm.querySelector('button[type="submit"]');
 
 /* constants */
 const CHECK_ICON_URL: string = './dist/assets/images/icons/icon-check.svg';
+const EMAIL_REGEX =
+	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 createCustomSelectOptions();
 
@@ -53,6 +56,13 @@ originalSelect.addEventListener('focusin', openCustomSelect);
 spinButton.addEventListener('keydown', handleSpinButton);
 increaseSpinbutton.addEventListener('click', increasePeople);
 decreaseSpinbutton.addEventListener('click', decreasePeople);
+
+/* --- for reservation form */
+reservationSubmitBtn.addEventListener('click', (e: Event) => {
+	e.preventDefault();
+	validateName();
+	validateEmail();
+});
 
 /* helper functions */
 /* --- for custom select */
@@ -160,6 +170,62 @@ function updateSpinButton(newValue: number): void {
 }
 
 /* --- for form validation */
+function validateName(): boolean {
+	const nameValue: string = nameInput.value;
+
+	if (isBlank(nameValue)) return displayFormError(nameInput, 'This field is required');
+
+	return removeFormError(nameInput);
+}
+
+function validateEmail(): boolean {
+	const emailValue: string = emailInput.value;
+
+	if (isBlank(emailValue)) return displayFormError(emailInput, 'This field is required');
+	if (!isValidEmail(emailValue)) return displayFormError(emailInput, 'Provide a valid email address');
+
+	return removeFormError(emailInput);
+}
+
+function displayFormError(input: HTMLInputElement, message: string): boolean {
+	let formGroup: HTMLElement = input.closest('.form-group');
+	let formError: HTMLElement;
+
+	while (formGroup) {
+		formGroup.classList.add('error');
+		formError = formGroup.querySelector('.form-error');
+
+		if (formError) {
+			formError.innerText = message;
+			break;
+		}
+
+		formGroup = formGroup.parentElement.closest('.form-group');
+	}
+
+	return false;
+}
+
+function removeFormError(input: HTMLInputElement): boolean {
+	let formGroup: HTMLElement = input.closest('.form-group');
+	let formError: HTMLElement;
+
+	while (formGroup) {
+		formGroup.classList.remove('error');
+		formError = formGroup.querySelector('.form-error');
+
+		if (formError) formError.innerText = '';
+
+		formGroup = formGroup.parentElement.closest('.form-group');
+	}
+
+	return true;
+}
+
 function isBlank(value: string): boolean {
-	return value !== '';
+	return value === '';
+}
+
+function isValidEmail(email: string) {
+	return EMAIL_REGEX.test(email);
 }
