@@ -72,10 +72,14 @@ decreaseSpinbutton.addEventListener('click', decreasePeople);
 /* --- for reservation form */
 reservationSubmitBtn.addEventListener('click', (e: Event) => {
 	e.preventDefault();
-	validateName();
-	validateEmail();
-	validateDate();
-	validateTime();
+	const isNameValid: boolean = validateName();
+	const isEmailValid: boolean = validateEmail();
+	const isDateValid: boolean = validateDate();
+	const isTimeValid: boolean = validateTime();
+
+	if (isNameValid && isEmailValid && isDateValid && isTimeValid) {
+		reservationForm.setAttribute('data-valid', 'true');
+	}
 });
 
 /* helper functions */
