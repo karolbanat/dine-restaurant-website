@@ -47,6 +47,8 @@ originalSelect.addEventListener('keyup', (e: KeyboardEvent) => {
 	switch (e.key) {
 		case 'ArrowUp':
 		case 'ArrowDown':
+		case 'ArrowLeft':
+		case 'ArrowRight':
 			handleSelection();
 			break;
 		case 'Enter':
