@@ -79,6 +79,8 @@ reservationSubmitBtn.addEventListener('click', (e: Event) => {
 
 	if (isNameValid && isEmailValid && isDateValid && isTimeValid) {
 		reservationForm.setAttribute('data-valid', 'true');
+	} else {
+		reservationForm.removeAttribute('data-valid');
 	}
 });
 
