@@ -4,8 +4,8 @@ This is a solution to the [Dine Website Challenge challenge on Frontend Mentor](
 
 ## Links
 
-- Solution URL: [Frontend Mentor Solution Page](https://your-solution-url.com)
-- Live Site URL: [GitHub Pages Site](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor Solution Page](https://www.frontendmentor.io/solutions/dine-restaurant-website-hs-Yr21pIz)
+- Live Site URL: [GitHub Pages Site](https://karolbanat.github.io/dine-restaurant-website/)
 
 ## Useful resources
 
