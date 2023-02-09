@@ -37,7 +37,7 @@
     </header>
 
     <main>
-        <section class="reservation-section-padding">
+        <section class="reservation-section-padding background-bottom-left">
             <div class="container">
                 <div class="even-columns-flex flex-align-start-lg">
                     <header class="text-center-md-max text-neutral-100">
@@ -49,7 +49,7 @@
                         </div>
                     </header>
 
-                    <div>
+                    <div class="lines-bottom-left">
                         <form class="reservation-form">
                             <div class="form-group">
                                 <label for="name"
@@ -86,6 +86,7 @@
                                         <input id="month"
                                                name="month"
                                                type="text"
+                                               inputmode="numeric"
                                                placeholder="MM"
                                                maxlength="2"
                                                pattern="(0[1-9])|(1[0-2])"
@@ -97,6 +98,7 @@
                                         <input id="day"
                                                name="day"
                                                type="text"
+                                               inputmode="numeric"
                                                placeholder="DD"
                                                maxlength="2"
                                                pattern="(0[1-9])|([1-2]\d)|(3[0-1])"
@@ -108,6 +110,7 @@
                                         <input id="year"
                                                name="year"
                                                type="text"
+                                               inputmode="numeric"
                                                placeholder="YYYY"
                                                maxlength="4"
                                                pattern="\d{4}"
@@ -127,6 +130,7 @@
                                         <input id="hour"
                                                name="hour"
                                                type="text"
+                                               inputmode="numeric"
                                                placeholder="09"
                                                maxlength="2"
                                                pattern="(0[1-9])|(1[0-2])"
@@ -138,6 +142,7 @@
                                         <input id="minute"
                                                name="minute"
                                                type="text"
+                                               inputmode="numeric"
                                                placeholder="00"
                                                maxlength="2"
                                                pattern="([0-5]\d)"

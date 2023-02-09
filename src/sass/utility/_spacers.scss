@@ -1,6 +1,13 @@
 @use '../abstracts/mixins';
 
 /* padding */
+.section-spacer-md-max {
+	padding-block: clamp(10rem, 17.5vw, 11.8rem);
+	@include mixins.media-query(large) {
+		padding-block: 0;
+	}
+}
+
 .menu-section-padding-block {
 	padding-block: clamp(7.2rem, 12.5vw, 9.6rem);
 	@include mixins.media-query(large) {
@@ -61,13 +68,6 @@
 .image-margin-shift-bottom-lg {
 	@include mixins.media-query(large) {
 		margin-block-end: -8rem;
-	}
-}
-
-.section-spacer-md-max {
-	margin-block: clamp(10rem, 17.5vw, 11.8rem);
-	@include mixins.media-query(large) {
-		margin-block: 0;
 	}
 }
 

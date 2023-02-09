@@ -7,3 +7,15 @@
 		@content;
 	}
 }
+
+@mixin lines-pattern-base {
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 16rem;
+		height: 7.6rem;
+		background-image: url('../assets/images/patterns/pattern-lines.svg');
+	}
+}
